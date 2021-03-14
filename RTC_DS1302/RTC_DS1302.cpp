@@ -41,14 +41,14 @@ RTC_DS1302::RTC_DS1302(int t_CLK, int t_DAT, int t_CE){
 unsigned char RTC_DS1302::read_byte(unsigned char addr){
 
 	unsigned char ret_val=0;
-	//start CE 1
+	// CE high
 	digitalWrite(CE, HIGH);
 	delayMicroseconds(10);
-	//DAT als Ausgang
+	//DAT as input
 	pinMode(DAT, OUTPUT);
 	digitalWrite(DAT, LOW);
 	delayMicroseconds(10);
-	// 8 Bit write
+	// write 8 Bits
 	int i = 0;
     while (i <= 7) 
     {
@@ -74,7 +74,7 @@ unsigned char RTC_DS1302::read_byte(unsigned char addr){
 		delayMicroseconds(10);
 		i++;
 	}
-	//read
+	//read 8 Bits
 	i = 0;
     while (i <= 7) 
     {
@@ -105,14 +105,14 @@ unsigned char RTC_DS1302::read_byte(unsigned char addr){
 
 void RTC_DS1302::write_byte(unsigned char addr, unsigned char val){
 
-	//start CE 1
+	//CE high
 	digitalWrite(CE, HIGH);
 	delayMicroseconds(10);
-	//DAT als Ausgang
+	//DAT as input
 	pinMode(DAT, OUTPUT);
 	digitalWrite(DAT, LOW);
 	delayMicroseconds(10);
-	// 8 Bit write
+	// write 8 Bits
 	int i = 0;
     while (i <= 7) 
     {
@@ -160,11 +160,6 @@ void RTC_DS1302::write_byte(unsigned char addr, unsigned char val){
 	digitalWrite(CE, LOW);
 	delayMicroseconds(10);
 }
-
-//digitalWrite( pinNumber, LOW );
-//pinMode( pinNumber, OUTPUT );  // now we're sourcing current, i.e. GND
-//pinMode( pinNumber, INPUT ); // now we're tri-stated
-//pinMode( pinNumber, OUTPUT );  // and back again
 
 void RTC_DS1302::get_timestamp(){
 	unsigned char temp_val=0;
@@ -262,7 +257,7 @@ void RTC_DS1302::set_year(int data){
 }
 
 
-//return-value functions
+//return values
 int RTC_DS1302::get_seconds(){
 return t_second;
 }
