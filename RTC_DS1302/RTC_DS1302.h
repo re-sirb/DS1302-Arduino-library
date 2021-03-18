@@ -12,7 +12,7 @@
 class RTC_DS1302
 {
   public:
-		RTC_DS1302(int CLK, int DAT, int CE);
+		RTC_DS1302(int t_CLK, int t_DAT, int t_CE);
 		
 		//Set time
 		void set_seconds(int data);
