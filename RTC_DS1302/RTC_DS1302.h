@@ -55,7 +55,7 @@ class RTC_DS1302
 		
 		int t_second=0;
 		int t_minute=0;
-		int	t_hour=0;
+		int t_hour=0;
 		
 		int d_weekday=0;
 		int d_day=0;
